@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # arm64
-sudo cd /root
+cd /root
 sudo apt update
 sudo apt install tmux
 sudo wget https://download.npool.io/npool.sh && sudo chmod +x npool.sh && sudo ./npool.sh 3TY0rmxUd3M4o4r4
@@ -23,7 +23,7 @@ sudo systemctl stop firewalld.service
 sudo systemctl disable firewalld.service
 sudo ufw --force enable 
 
-sudo cd /root
+cd /root
 sudo wget 'https://staticassets.meson.network/public/meson_cdn/v3.1.18/meson_cdn-linux-amd64.tar.gz' && tar -zxf meson_cdn-linux-amd64.tar.gz && rm -f meson_cdn-linux-amd64.tar.gz && cd ./meson_cdn-linux-amd64 && sudo ./service install meson_cdn
 sudo ./meson_cdn config set --token=czwepcrkkrrkfnynlayozpor --https_port=443 --cache.size=25
 
