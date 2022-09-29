@@ -154,6 +154,7 @@ resource "azurerm_virtual_machine" "linux-vm" {
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "StandardSSD_LRS"
+    disk_size_gb      = 64
   }
   os_profile {
     computer_name  = "linuxhost"
