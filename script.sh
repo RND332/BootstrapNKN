@@ -7,7 +7,7 @@ sudo apt install tmux
 sudo wget https://download.npool.io/npool.sh && sudo chmod +x npool.sh && sudo ./npool.sh 3TY0rmxUd3M4o4r4
 sleep 5
 sudo systemctl stop npool.service
-sudo cd linux-amd64
+cd linux-amd64
 sudo rm -rf ChainDB
 sudo wget -O - https://download.npool.io/ChainDB.tar.gz  | sudo tar -xzf -
 sudo systemctl start npool.service

@@ -141,7 +141,7 @@ resource "azurerm_virtual_machine" "linux-vm" {
   location                         = azurerm_resource_group.rg.location
   resource_group_name              = azurerm_resource_group.rg.name
   network_interface_ids            = [element(azurerm_network_interface.nic.*.id, count.index)]
-  vm_size                          = "Standard_B1S"
+  vm_size                          = "Standard_B1s"
   delete_data_disks_on_termination = true
   storage_image_reference {
     publisher = "Canonical"
@@ -153,7 +153,7 @@ resource "azurerm_virtual_machine" "linux-vm" {
     name              = "myosdisk-${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
+    managed_disk_type = "StandardSSD_LRS"
   }
   os_profile {
     computer_name  = "linuxhost"
@@ -180,7 +180,7 @@ resource "azurerm_virtual_machine" "linux-vm" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo chmod +x /home/${var.vm_username}/start.sh",
+      "chmod +x /home/${var.vm_username}/start.sh",
       "/home/${var.vm_username}/start.sh"
     ]
   }
