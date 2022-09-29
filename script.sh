@@ -9,8 +9,15 @@ sleep 5
 sudo systemctl stop npool.service
 cd linux-amd64
 sudo rm -rf ChainDB
-sudo wget -O - https://download.npool.io/ChainDB.tar.gz  | sudo tar -xzf -
+sudo wget -O - https://nkn.org/ChainDB_pruned_latest.tar.gz  | sudo tar -xzf -
 sudo systemctl start npool.service
+
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
